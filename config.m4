@@ -50,7 +50,7 @@ if test "$PHP_RDKAFKA" != "no"; then
 
   AC_MSG_CHECKING([for librdkafka version])
   old_LDFLAGS="$LDFLAGS"
-  LDFLAGS=-lrdkafka
+  LDFLAGS="-L$RDKAFKA_DIR/$PHP_LIBDIR -lm -lrdkafka"
   AC_TRY_RUN([
     #include <librdkafka/rdkafka.h>
     int main() {

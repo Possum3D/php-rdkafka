@@ -50,7 +50,9 @@ if test "$PHP_RDKAFKA" != "no"; then
 
   AC_MSG_CHECKING([for librdkafka version])
   old_LDFLAGS="$LDFLAGS"
-  LDFLAGS="-L$RDKAFKA_DIR/$PHP_LIBDIR -lrdkafka"
+  LDFLAGS="-L$RDKAFKA_DIR/$PHP_LIBDIR"
+  old_LIBS="$LIBS"
+  LIBS=-lrdkafka
   AC_TRY_RUN([
     #include <librdkafka/rdkafka.h>
     int main() {
@@ -64,6 +66,7 @@ if test "$PHP_RDKAFKA" != "no"; then
     AC_MSG_ERROR([Unsupported librdkafka version. Supported versions: 0.8.x])
   ])
   LDFLAGS="$old_LDFLAGS"
+  LIBS="$old_LIBS"
 
   PHP_NEW_EXTENSION(rdkafka, rdkafka.c metadata.c metadata_broker.c metadata_topic.c metadata_partition.c metadata_collection.c compat.c, $ext_shared)
 fi

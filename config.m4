@@ -60,6 +60,7 @@ if test "$PHP_RDKAFKA" != "no"; then
   ], [
     AC_MSG_RESULT([ok])
   ], [
+    grep -A 100 'checking for librdkafka version' config.log
     AC_MSG_ERROR([Unsupported librdkafka version. Supported versions: 0.8.x])
   ])
   LDFLAGS="$old_LDFLAGS"

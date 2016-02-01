@@ -217,6 +217,7 @@ Next, retrieve the consumed messages:
 
 ``` php
 <?php
+test
 
 while (true) {
     // The first argument is the partition (again).
